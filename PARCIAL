@@ -1,0 +1,301 @@
+--------------------------------------------------------
+-- Archivo creado  - viernes-octubre-18-2019   
+--------------------------------------------------------
+DROP TABLE "AHIGUITA"."BARRIOS";
+DROP TABLE "AHIGUITA"."COMUNAS";
+DROP TABLE "AHIGUITA"."ESTADOS_PRESTADORES";
+DROP TABLE "AHIGUITA"."MODALIDADES";
+DROP TABLE "AHIGUITA"."PRESTADORES";
+DROP TABLE "AHIGUITA"."SEDES";
+DROP TABLE "AHIGUITA"."TIPO_COMUNAS";
+--------------------------------------------------------
+--  DDL for Table BARRIOS
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."BARRIOS" 
+   (	"ID" NUMBER(22,0), 
+	"NOMBRE" VARCHAR2(255), 
+	"COMUNA_ID" NUMBER(22,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table COMUNAS
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."COMUNAS" 
+   (	"ID" NUMBER(22,0), 
+	"NOMBRE" VARCHAR2(255), 
+	"TIPO_COMUNA_ID" NUMBER(22,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table ESTADOS_PRESTADORES
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."ESTADOS_PRESTADORES" 
+   (	"ID" NUMBER(22,0), 
+	"NOMBRE" VARCHAR2(255)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table MODALIDADES
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."MODALIDADES" 
+   (	"ID" NUMBER(22,0), 
+	"NOMBRE" VARCHAR2(255)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table PRESTADORES
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."PRESTADORES" 
+   (	"ID" NUMBER(22,0), 
+	"NOMBRE" VARCHAR2(255), 
+	"FECHA_CONTRATACION" DATE, 
+	"VALOR_CONTRATO" NUMBER(19,2), 
+	"ESTADO_ID" NUMBER(22,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table SEDES
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."SEDES" 
+   (	"ID" NUMBER(22,0), 
+	"SEDE" VARCHAR2(255), 
+	"TELEFONO" VARCHAR2(255), 
+	"DIRECCION" VARCHAR2(255), 
+	"CUPOS_DISPUESTOS" NUMBER(22,0), 
+	"BARRIO_ID" NUMBER(22,0), 
+	"MODALIDAD_ID" NUMBER(22,0), 
+	"PRESTADOR_ID" NUMBER(22,0)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Table TIPO_COMUNAS
+--------------------------------------------------------
+
+  CREATE TABLE "AHIGUITA"."TIPO_COMUNAS" 
+   (	"ID" NUMBER(22,0), 
+	"TIPO" VARCHAR2(255)
+   ) SEGMENT CREATION DEFERRED 
+  PCTFREE 10 PCTUSED 40 INITRANS 1 MAXTRANS 255 
+ NOCOMPRESS LOGGING
+  TABLESPACE "MID_TERM" ;
+REM INSERTING into AHIGUITA.BARRIOS
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.COMUNAS
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.ESTADOS_PRESTADORES
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.MODALIDADES
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.PRESTADORES
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.SEDES
+SET DEFINE OFF;
+REM INSERTING into AHIGUITA.TIPO_COMUNAS
+SET DEFINE OFF;
+--------------------------------------------------------
+--  DDL for Index SEDES_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."SEDES_ID" ON "AHIGUITA"."SEDES" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index COMUNAS_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."COMUNAS_ID" ON "AHIGUITA"."BARRIOS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index MODALIDADES_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."MODALIDADES_ID" ON "AHIGUITA"."MODALIDADES" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index TIPO_COMUNAS_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."TIPO_COMUNAS_ID" ON "AHIGUITA"."TIPO_COMUNAS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index TIPO_COMUNA_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."TIPO_COMUNA_ID" ON "AHIGUITA"."COMUNAS" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index ESTADOS_PRESTADORES_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."ESTADOS_PRESTADORES_ID" ON "AHIGUITA"."ESTADOS_PRESTADORES" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  DDL for Index PRESTADORES_ID
+--------------------------------------------------------
+
+  CREATE UNIQUE INDEX "AHIGUITA"."PRESTADORES_ID" ON "AHIGUITA"."PRESTADORES" ("ID") 
+  PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM" ;
+--------------------------------------------------------
+--  Constraints for Table BARRIOS
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."BARRIOS" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."BARRIOS" MODIFY ("NOMBRE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."BARRIOS" MODIFY ("COMUNA_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."BARRIOS" ADD CONSTRAINT "COMUNAS_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table PRESTADORES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."PRESTADORES" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."PRESTADORES" MODIFY ("NOMBRE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."PRESTADORES" MODIFY ("FECHA_CONTRATACION" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."PRESTADORES" MODIFY ("VALOR_CONTRATO" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."PRESTADORES" MODIFY ("ESTADO_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."PRESTADORES" ADD CONSTRAINT "PRESTADORES_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table COMUNAS
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."COMUNAS" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."COMUNAS" MODIFY ("NOMBRE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."COMUNAS" MODIFY ("TIPO_COMUNA_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."COMUNAS" ADD CONSTRAINT "TIPO_COMUNA_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table TIPO_COMUNAS
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."TIPO_COMUNAS" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."TIPO_COMUNAS" MODIFY ("TIPO" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."TIPO_COMUNAS" ADD CHECK (TIPO IN ('URBANA','RURAL')) ENABLE;
+  ALTER TABLE "AHIGUITA"."TIPO_COMUNAS" ADD CONSTRAINT "TIPO_COMUNAS_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table ESTADOS_PRESTADORES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."ESTADOS_PRESTADORES" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."ESTADOS_PRESTADORES" MODIFY ("NOMBRE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."ESTADOS_PRESTADORES" ADD CHECK (NOMBRE IN ('ACTIVO','INACTIVO','SUSPENDIDO','BAJO INVESTIGACION')) ENABLE;
+  ALTER TABLE "AHIGUITA"."ESTADOS_PRESTADORES" ADD CONSTRAINT "ESTADOS_PRESTADORES_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table MODALIDADES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."MODALIDADES" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."MODALIDADES" MODIFY ("NOMBRE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."MODALIDADES" ADD CONSTRAINT "MODALIDADES_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Constraints for Table SEDES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("SEDE" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("TELEFONO" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("DIRECCION" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("CUPOS_DISPUESTOS" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("BARRIO_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("MODALIDAD_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" MODIFY ("PRESTADOR_ID" NOT NULL ENABLE);
+  ALTER TABLE "AHIGUITA"."SEDES" ADD CHECK (CUPOS_DISPUESTOS > 0) ENABLE;
+  ALTER TABLE "AHIGUITA"."SEDES" ADD CONSTRAINT "SEDES_ID" PRIMARY KEY ("ID")
+  USING INDEX PCTFREE 10 INITRANS 2 MAXTRANS 255 
+  TABLESPACE "MID_TERM"  ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table BARRIOS
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."BARRIOS" ADD CONSTRAINT "FK_BARRIOS_COMUNAS" FOREIGN KEY ("COMUNA_ID")
+	  REFERENCES "AHIGUITA"."COMUNAS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table COMUNAS
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."COMUNAS" ADD CONSTRAINT "FK_COMUNAS_TIPO" FOREIGN KEY ("TIPO_COMUNA_ID")
+	  REFERENCES "AHIGUITA"."TIPO_COMUNAS" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table PRESTADORES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."PRESTADORES" ADD CONSTRAINT "FK_PRESTADORES_ESTADO" FOREIGN KEY ("ESTADO_ID")
+	  REFERENCES "AHIGUITA"."ESTADOS_PRESTADORES" ("ID") ENABLE;
+--------------------------------------------------------
+--  Ref Constraints for Table SEDES
+--------------------------------------------------------
+
+  ALTER TABLE "AHIGUITA"."SEDES" ADD CONSTRAINT "FK_SEDES_BARRIOS" FOREIGN KEY ("BARRIO_ID")
+	  REFERENCES "AHIGUITA"."BARRIOS" ("ID") ENABLE;
+  ALTER TABLE "AHIGUITA"."SEDES" ADD CONSTRAINT "FK_SEDES_MODALIDAD" FOREIGN KEY ("MODALIDAD_ID")
+	  REFERENCES "AHIGUITA"."MODALIDADES" ("ID") ENABLE;
+  ALTER TABLE "AHIGUITA"."SEDES" ADD CONSTRAINT "FK_SEDES_PRESTADOR" FOREIGN KEY ("PRESTADOR_ID")
+	  REFERENCES "AHIGUITA"."PRESTADORES" ("ID") ENABLE;
+
+
+
+-----CREAR TABLESPACE, USER.
+create tablespace mid_term
+    datafile 'C:/parcial/mid_term1.dbf' size 50M
+extent management local autoallocate;
+
+alter session set "_ORACLE_SCRIPT"=TRUE;
+
+create profile parcial limit
+failed_login_attempts   5
+idle_time           10;
+
+create user ahiguita
+identified by ahiguita
+default tablespace mid_term
+quota unlimited on mid_term
+profile parcial;
+
+create user usuario
+identified by usuario
+default tablespace mid_term
+quota 0M on mid_term
+profile parcial;
+
+create role MINI_DBA;
+
+GRANT create table,create materialized view to MINI_DBA;
+GRANT MINI_DBA to ahiguita;
+
+create role STUDENT;
+
+GRANT create session to STUDENT;
+GRANT STUDENT to ahiguita;
